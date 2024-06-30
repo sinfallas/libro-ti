@@ -1,0 +1,54 @@
+Primero algunas definiciones basicas:
+
+* TWO-PIZZA TEAMS (Amazon): https://docs.aws.amazon.com/whitepapers/latest/introduction-devops-aws/two-pizza-teams.html
+* Empresas FAANG: Facebook, Amazon, Apple, Netflix, Google (son las que se consideran referentes a la hora de implementar o definir nuevas metodologias)
+
+---------------------------------------
+
+SRE:
+Este es un pequeno libro que hable sobre la experiencia de google al definir o implementar SRE (lo recomiendo de primero): https://sre.google/workbook/table-of-contents/
+https://www.redhat.com/es/topics/devops/what-is-sre
+https://www.netapp.com/es/devops-solutions/what-is-site-reliability-engineering/#:~:text=La%20ingenier%C3%ADa%20de%20fiabilidad%20del%20sitio%20(SRE)%20es%20una%20disciplina,problemas%20de%20infraestructura%20y%20operaciones.
+https://www.freelancermap.com/blog/es/que-hace-ingeniero-sre/
+https://sre.google/in-conversation/
+https://www.gremlin.com/site-reliability-engineering/the-role-and-responsibilities-of-sres-in-software-engineering/
+https://www.simplilearn.com/site-reliability-engineer-article
+https://www.flagship.io/glossary/site-reliability-engineer/
+https://opensource.com/article/18/10/what-site-reliability-engineer
+https://business.linkedin.com/talent-solutions/resources/talent-engagement/job-descriptions/site-reliability-engineer
+https://www.splunk.com/en_us/blog/learn/site-reliability-engineer-sre-role.html
+
+NOTA: 
+1) Basandonos en la imagen que les comparti el dia del meet, y en lo compartido aca mediante enlaces podemos ver que la filosofia/figura del SRE en el departamento de TI esta orientada basicamente en 3:
+* User Experience (desarrollo de software) en el caso de EO entraria en conflicto con el ARQUITECTO DE SOFTWARE y la idea es que cada quien tenga su parcela.
+* Alta disponibilidad (esto SI aplica a EO sobre todo en el nuevo paradigma de nube hibrida)
+* Seguridad (esto SI aplica a EO)
+
+2) Como ven se podria mantener un perfil similir (SRE) sin afectar a otras unidades
+
+---------------------------------------
+
+ARQUITECTO DE SOFTWARE:
+
+
+
+
+---------------------------------------
+
+DEV/OPS:
+
+ingenieria de datos
+
+idea arcaica de equipos corporaqttivos
+
+seguridsad de la informacion
+
+definicion utopica de prvacidad
+
+Bring your own device
+
+
+https://www.elconfidencial.com/tecnologia/2013-02-14/use-sus-propios-dispositivos-para-trabajar-y-pasele-la-factura-al-jefe_768094/
+https://www.xataka.com/pro/dispositivos-personales-solucionando-problemas-nuestra-cuenta-ano-trabajando-casa-pandemia
+https://trends.inycom.es/seguimos-pensando-en-la-movilidad/
+
