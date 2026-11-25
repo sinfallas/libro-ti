@@ -1,0 +1,17 @@
+flowchart LR
+    subgraph SANO["Deuda Calculada"]
+        direction TB
+        S1["Decisión consciente por fecha crítica<br/>(Se documenta qué atajo se tomó)"] --> S2["Registro visible con costo e interés<br/>(Impacto medido en horas y riesgo)"]
+        S2 --> S3["Cuota protegida del 15-20% trimestral<br/>(Refactorización o retiro programado)"]
+        S3 --> S4["Plataforma estable y auditable<br/>(Estándares abiertos + plan de salida)"]
+    end
+
+    subgraph TOXICO["Espiral de Chapuza y Moda"]
+        direction TB
+        T1["Parche 'temporal' sin documentar<br/>+ compra ejecutiva del juguete de moda"] --> T2["Interés compuesto oculto<br/>(Nadie toca el 'fósil' que factura)"]
+        T2 --> T3["Fin de soporte real (EOL) + candado<br/>de proveedor o 'iluminado' que renuncia"]
+        T3 --> T4["Parálisis operativa o rescate de pánico<br/>(Se paga el triple en plena caída)"]
+    end
+
+    SANO -.->|"Sin disciplina ni cuota<br/>de saneamiento degenera en"| TOXICO
+    TOXICO ==>|"Semáforo EOL + filtro<br/>anti-humo recupera"| SANO

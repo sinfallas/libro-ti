@@ -43,3 +43,16 @@
   - **Política de tolerancia cero absoluta:** Si no existe un ticket previo con el formulario completo, nadie en TI mueve un dedo, aunque quien lo pida sea un gerente o director. Las "excepciones blandas" perpetúan el *amiguismo*, vuelven invisible la carga real de trabajo, rompen la trazabilidad de auditoría y condenan los proyectos formales a convertirse en proyectos zombis.
 - **Herramientas y métricas del Marco de Acción Pragmático (Bloque 1.4):**
   - Tabla traductora directa (*Jerga TI -> Impacto en negocio/riesgo*), cuantificación del coste por hora de inactividad (*RTO/RPO* en moneda dura), despliegue de herramientas libres probadas en trinchera (**GLPI**, **Zammad**, **osTicket**) y publicación interna de un catálogo transparente de roles y servicios.
+
+---
+
+## Sesión 02 — Capítulo 2: Deuda técnica, obsolescencia y el síndrome del último artilugio (`manuscrito/02-deuda-tecnica-obsolescencia-modas.md`)
+
+- **Escena y excentricidad central (Bloque 2.3):**
+  - El **"fósil intocable"** que sostiene la facturación: el servidor o sistema con sistema operativo muerto hace años que nadie en la empresa se atreve siquiera a reiniciar por pánico a que no vuelva a arrancar, conviviendo bajo el mismo techo con compras ejecutivas del último juguete tecnológico de moda.
+- **Postura autoral sobre deuda técnica y obsolescencia (Bloques 2.1 y 2.2):**
+  - **Doble criterio estricto:** Separar el préstamo técnico calculado (con plan y fecha de amortización) de la simple chapuza perpetua acumulada por desidia; y distinguir la **obsolescencia real de riesgo** (fin de parches de seguridad y repuestos) frente a la **obsolescencia programada comercial** con la que los proveedores fuerzan cambios de versión o suscripción sin aportar valor operativo.
+- **Regla de arquitectura frente a *vendor lock-in* y *Resume-Driven Development* (Bloque 2.3):**
+  - Exigir siempre **formatos/protocolos abiertos y plan de salida documentado** antes de contratar un proveedor o adoptar una herramienta, vetando tecnologías exóticas elegidas para engordar currículums que dependan de un único "iluminado" en el equipo.
+- **Herramientas y métricas del Marco de Acción Pragmático (Bloque 2.4):**
+  - Semáforo vivo de ciclo de vida (*EOL/EOS*) apoyado en **Snipe-IT**, **NetBox** o **GLPI** cruzado con `endoflife.date` (más aislamiento inmediato de lo vencido), cuota fija protegida del **15 %–20 %** de capacidad para pagar deuda existente y **filtro anti-humo de 5 preguntas** antes de aprobar cualquier moda comercial.
