@@ -1,0 +1,16 @@
+flowchart LR
+    subgraph MODA["Dogma de Moda (Humo)"]
+        direction TB
+        M1["Imitación ciega de escala FAANG<br/>(Microservicios para 80 usuarios)"] --> M2["Lift & Shift sin rediseñar nada<br/>('Subir todo al Cloud por decreto')"]
+        M2 --> M3["Facturas sorpresa 24/7 + peajes<br/>de salida de datos (egress)"]
+        M3 --> M4["Enchufar 'IA mágica' sobre datos<br/>sucios y permisos descontrolados"]
+    end
+
+    subgraph REAL["Realismo 2026 (Trinchera)"]
+        direction TB
+        R1["Tecnología aburrida y probada<br/>(Linux LTS + PostgreSQL + monolito modular)"] --> R2["Arquitectura híbrida por carga<br/>(Base fija propia/VPS + picos en Cloud)"]
+        R2 --> R3["1 o 2 fichas de innovación al año<br/>(Solo donde el negocio se diferencia)"]
+        R3 --> R4["Datos limpios y acceso gobernado<br/>antes de automatizar con IA"]
+    end
+
+    MODA ==>|"Fin del cheque en blanco<br/>e ingeniería con números"| REAL

@@ -69,3 +69,16 @@
   - Mano dura en ambos frentes: jubilación definitiva de la VPN plana abierta a toda la LAN (vector directo de propagación lateral de *ransomware*) y prohibición de gestionar carteras de clientes o documentación sensible desde cuentas personales de WhatsApp.
 - **Herramientas y estándares del Marco de Acción Pragmático (Bloque 3.4):**
   - Identidad centralizada con **Keycloak** o **Authentik** + MFA fuerte (**FIDO2 / WebAuthn / *Passkeys*** o *TOTP*, sin SMS); reemplazo de VPN plana por malla segmentada sobre **WireGuard** (**NetBird** o **Headscale/Tailscale**); aislamiento sin datos locales en *BYOD* vía **Apache Guacamole** o **Kasm Workspaces**; canales propios con **Chatwoot** / **Mattermost**; y política *BYOD* firmable de 1 página.
+
+---
+
+## Sesión 04 — Capítulo 4: De la fiebre Cloud/FAANG a la era de la IA y la infraestructura híbrida (`manuscrito/04-de-era-faang-cloud-a-ia-hibrida.md`)
+
+- **Escena y excentricidad central (Bloque 4.3):**
+  - El síndrome de *"creerse Netflix"* (*Cargo Cult FAANG*): desplegar orquestadores complejos y decenas de microservicios para una carga de apenas 80 usuarios concurrentes, o ejecutar un *Lift & Shift* ciego hacia la nube pública que triplica la factura mensual sin resolver ni un solo problema arquitectónico.
+- **Postura estratégica sobre *Cloud* vs. Infraestructura Híbrida (Bloques 4.1 y 4.2):**
+  - **Realismo híbrido sin dogmas religiosos:** La nube pública es el centro de datos de un tercero alquilado por minuto; conviene para elasticidad real, picos impredecibles o servicios globales puntuales, mientras que para cargas base estables 24/7 suele resultar mucho más eficiente y predecible operar sobre hierro propio, *colocation* o servidores virtuales/dedicados de tarifa plana.
+- **Tesis sobre el ciclo de la IA generativa corporativa (Bloques 4.2 y 4.3):**
+  - La fiebre de la IA en 2026 repite exactamente el patrón histórico de modas previas (*Big Data*, *Blockchain*, *Cloud-First*): amplifica el valor donde ya existen datos limpios, permisos ordenados y procesos claros, pero multiplica el caos, los costos y las fugas cuando se enchufa sobre datos sucios y procesos rotos.
+- **Herramientas y reglas del Marco de Acción Pragmático (Bloque 4.4):**
+  - Doctrina de la **Tecnología Aburrida** (**PostgreSQL**, **Linux LTS**, contenedores simples **Docker/Podman** y monolitos modulares bien diseñados), regla estricta de **1 a 2 Fichas de Innovación al año** reservadas al diferencial real del negocio, y matriz objetiva de ubicación de cargas.
