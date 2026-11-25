@@ -1,0 +1,17 @@
+flowchart LR
+    subgraph OPERA["Dominios Operativos"]
+        direction TB
+        O1["Ciberseguridad Operativa<br/>(CISO / SecOps: defensa activa)"] --> O2["Redes + Sistemas Híbridos<br/>(Conectividad, cómputo y nube)"]
+        O2 --> O3["Service Desk (ITIL 4)<br/>(Puerta única, catálogo y SLAs)"]
+        O3 --> O4["Arquitectura y Desarrollo<br/>(Software, APIs y plataformas)"]
+    end
+
+    subgraph GOB["Dirección y Control"]
+        direction TB
+        G1["CIO / Director de TI<br/>(Estrategia a 3 años + bolsa técnica)"] --> G2["Aplicaciones (BRM) + FinOps<br/>(ERP, procesos y costos claros)"]
+        G2 --> G3["Proyectos y Estrategia<br/>(Alcance, entregas y priorización)"]
+        G3 --> G4["GRC, Auditoría TI y DPO<br/>(Control independiente sin operar)"]
+    end
+
+    GOB ==>|"Prioridades, presupuesto<br/>y cobertura cruzada"| OPERA
+    OPERA -.->|"Métricas reales y evidencia<br/>auditada sin ser juez y parte"| GOB

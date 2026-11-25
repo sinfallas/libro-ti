@@ -82,3 +82,16 @@
   - La fiebre de la IA en 2026 repite exactamente el patrón histórico de modas previas (*Big Data*, *Blockchain*, *Cloud-First*): amplifica el valor donde ya existen datos limpios, permisos ordenados y procesos claros, pero multiplica el caos, los costos y las fugas cuando se enchufa sobre datos sucios y procesos rotos.
 - **Herramientas y reglas del Marco de Acción Pragmático (Bloque 4.4):**
   - Doctrina de la **Tecnología Aburrida** (**PostgreSQL**, **Linux LTS**, contenedores simples **Docker/Podman** y monolitos modulares bien diseñados), regla estricta de **1 a 2 Fichas de Innovación al año** reservadas al diferencial real del negocio, y matriz objetiva de ubicación de cargas.
+
+---
+
+## Sesión 05 — Capítulo 5: Anatomía real de un Departamento de TI: 8 dominios, CIO y Two-Pizza Teams (`manuscrito/05-anatomia-departamento-ti-y-equipos.md`)
+
+- **Escena y excentricidad central (Bloque 5.3):**
+  - El síndrome del **"héroe irreemplazable" (*bus factor = 1*)**: el técnico o jefe que concentra claves y arquitectura en su cabeza sin documentar nada, no puede desconectarse ni en vacaciones o enfermedad y deja huérfana a toda la operación si falta un solo día.
+- **Postura autoral sobre el perfil del CIO / Director de TI (Bloques 5.1 y 5.2):**
+  - Un director de orquesta con cicatrices técnicas reales (para que ningún proveedor ni subordinado le venda humo), pero **con las manos fuera del teclado operativo diario**: enfocado en alinear el negocio, asegurar cobertura funcional de todas las áreas, defender presupuesto y planificar con **horizonte a 3 años**.
+- **Adaptación de los 8 dominios y *Two-Pizza Teams* en PyMEs y empresas medianas (Bloques 5.2 y 5.3):**
+  - Las **8 funciones existen siempre** aunque la plantilla total sea de 3 a 5 personas: se agrupan sombreros operativos afines en pocas cabezas con rotación de respaldo cruzado (*bolsa de técnicos*), prohibiendo terminantemente mezclar ejecución técnica con autoauditoría (GRC/Auditoría debe mantenerse independiente).
+- **Herramientas y reglas del Marco de Acción Pragmático (Bloque 5.4):**
+  - Tabla evolutiva de asignación de dominios según escala (**3**, **10** y **30+ personas**) a 3 años, matriz **RACI** pública, bóveda compartida de credenciales por rol (**Vaultwarden / Bitwarden** o **Passbolt**), documentación viva (**BookStack** u **Outline**) y la **prueba obligatoria de vacaciones desconectadas**.
