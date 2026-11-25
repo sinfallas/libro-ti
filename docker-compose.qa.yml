@@ -1,0 +1,81 @@
+# SPDX-License-Identifier: CC-BY-SA-4.0
+# Copyright (C) 2026 Jesús A. Palencia S.
+
+services:
+  editorial:
+    build:
+      context: .
+      dockerfile: Dockerfile.editorial
+    image: libro-ti/editorial:3.6.4
+    hostname: libro_editorial_env
+    pull_policy: if_not_present
+    mem_limit: 1g
+    restart: "no"
+    cpus: "${QA_CPU_LIMIT:-2.0}"
+    pids_limit: 256
+    network_mode: none
+    read_only: true
+    tmpfs:
+      - /tmp:size=64M,noexec,nosuid,nodev
+    user: "${QA_UID:-1000}:${QA_GID:-1000}"
+    environment:
+      HOME: /tmp
+      TMPDIR: /tmp
+      PYTHONDONTWRITEBYTECODE: "1"
+      TZ: UTC
+    volumes:
+      - .:/workspace
+    working_dir: /workspace
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+
+  pandoc:
+    image: pandoc/core:3.6.4@sha256:5b8a29d9b70d5d8ca766e5d1dcfc41916b23ab79276a80527be70516110f4c1e
+    hostname: libro_pandoc_env
+    pull_policy: if_not_present
+    mem_limit: 1g
+    restart: "no"
+    cpus: "${QA_CPU_LIMIT:-2.0}"
+    pids_limit: 256
+    network_mode: none
+    read_only: true
+    tmpfs:
+      - /tmp:size=64M,noexec,nosuid,nodev
+    user: "${QA_UID:-1000}:${QA_GID:-1000}"
+    environment:
+      HOME: /tmp
+      TMPDIR: /tmp
+      PYTHONDONTWRITEBYTECODE: "1"
+      TZ: UTC
+    volumes:
+      - .:/workspace
+    working_dir: /workspace
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+
+  qa-bash:
+    image: sinfallas/base-bash-qa@sha256:2d1f579e20ef384e85da839304dbae2d28231fcdc893c21cbe79861b44d675a7
+    hostname: bash_qa_env
+    pull_policy: if_not_present
+    mem_limit: 1g
+    restart: "no"
+    cpus: "${QA_CPU_LIMIT:-2.0}"
+    pids_limit: 256
+    network_mode: none
+    user: "${QA_UID:-1000}:${QA_GID:-1000}"
+    environment:
+      TZ: UTC
+      HOME: /tmp
+      _USER: qa
+    volumes:
+      - .:/app
+    working_dir: /app
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    command: bash -c "echo 'Contenedor QA Bash listo para ShellCheck, shfmt, BATS y kcov.'; exit 0"

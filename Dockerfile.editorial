@@ -1,0 +1,18 @@
+# SPDX-License-Identifier: CC-BY-SA-4.0
+# Copyright (C) 2026 Jesús A. Palencia S.
+FROM pandoc/core:3.6.4@sha256:5b8a29d9b70d5d8ca766e5d1dcfc41916b23ab79276a80527be70516110f4c1e
+
+RUN apk add --no-cache make python3 \
+    && addgroup -g 10001 -S appgroup \
+    && adduser -u 10001 -S -G appgroup -h /workspace -s /sbin/nologin appuser \
+    && mkdir -p /workspace \
+    && chown 10001:10001 /workspace
+
+WORKDIR /workspace
+USER appuser
+
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+  CMD pandoc --version >/dev/null && make --version >/dev/null || exit 1
+
+ENTRYPOINT []
+CMD ["make", "help"]

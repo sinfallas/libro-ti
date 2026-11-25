@@ -1,0 +1,4 @@
+# SPDX-License-Identifier: CC-BY-SA-4.0
+# Contexto mínimo para Dockerfile.editorial (sin COPY desde host)
+*
+!Dockerfile.editorial

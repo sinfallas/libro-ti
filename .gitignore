@@ -1,0 +1,24 @@
+# Artefactos compilados y temporales editoriales
+build/*.odt
+build/*.pdf
+build/*.epub
+build/*.tmp
+plantillas/*.tmp
+.~lock.*#
+*.bak
+*~
+
+# Artefactos efímeros QA-11X y cobertura
+coverage_report/
+reports/
+graphify-out/
+*.log
+.env
+.env.*
+!.env.example
+.DS_Store
+.agents/ACTIVE_TASK.md
+.agents/.qa-evidence.json
+.agents/.cache/
+.agents/artifacts/
+pacts/
