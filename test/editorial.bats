@@ -21,6 +21,7 @@ setup() {
   export EDITORIAL_PROJECT_DIR="${SANDBOX}"
   export EDITORIAL_COMPOSE_FILE="${SANDBOX}/docker-compose.qa.yml"
   export EDITORIAL_IMAGE="libro-ti/editorial:3.6.4"
+  export DIAGRAMAS_IMAGE="libro-ti/diagramas:1.52.0"
   export QA_UID="1000"
   export QA_GID="1000"
 }
@@ -30,7 +31,7 @@ setup() {
   run bash "${SCRIPT_PATH}"
   assert_success
   assert_output --partial "Uso: ./scripts/editorial.sh <comando>"
-  assert_output --partial "plantilla"
+  assert_output --partial "diagramas"
   assert_output --partial "qa-all"
 }
 
@@ -81,6 +82,28 @@ setup() {
   assert_success
   assert_equal "$(mock_get_call_args "${MOCK_DOCKER}" 3)" "image inspect libro-ti/editorial:3.6.4"
   assert_equal "$(mock_get_call_args "${MOCK_DOCKER}" 4)" "compose --project-directory ${SANDBOX} -f ${SANDBOX}/docker-compose.qa.yml run --rm -T -u 1001:1002 editorial make odt MANUSCRITO_DIR=custom"
+}
+
+@test "editorial.sh diagramas y odt con archivos mmd ejecutan el servicio diagramas" {
+  mkdir -p "${SANDBOX}/diagramas"
+  printf "flowchart LR\n  A --> B\n" >"${SANDBOX}/diagramas/01-test.mmd"
+
+  mock_set_status "${MOCK_DOCKER}" 1 1
+  for i in 2 3 4 5 6 7; do
+    mock_set_status "${MOCK_DOCKER}" 0 "${i}"
+  done
+
+  run bash "${SCRIPT_PATH}" diagramas
+  assert_success
+  assert_output --partial "AVISO: Imagen local 'libro-ti/diagramas:1.52.0' no encontrada"
+  assert_equal "$(mock_get_call_args "${MOCK_DOCKER}" 1)" "image inspect libro-ti/diagramas:1.52.0"
+  assert_equal "$(mock_get_call_args "${MOCK_DOCKER}" 2)" "compose --project-directory ${SANDBOX} -f ${SANDBOX}/docker-compose.qa.yml build diagramas"
+  assert_equal "$(mock_get_call_args "${MOCK_DOCKER}" 3)" "compose --project-directory ${SANDBOX} -f ${SANDBOX}/docker-compose.qa.yml run --rm -T -u 1000:1000 diagramas diagramas"
+
+  run bash "${SCRIPT_PATH}" odt
+  assert_success
+  assert_equal "$(mock_get_call_args "${MOCK_DOCKER}" 5)" "compose --project-directory ${SANDBOX} -f ${SANDBOX}/docker-compose.qa.yml run --rm -T -u 1000:1000 diagramas diagramas"
+  assert_equal "$(mock_get_call_args "${MOCK_DOCKER}" 7)" "compose --project-directory ${SANDBOX} -f ${SANDBOX}/docker-compose.qa.yml run --rm -T -u 1000:1000 editorial make odt"
 }
 
 @test "editorial.sh construye automaticamente editorial si la imagen local no existe" {

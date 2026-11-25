@@ -30,3 +30,16 @@
   - El choque con la realidad operativa tras 2022: el fin de la luna de miel financiera con el *Cloud*, la explosión del humo comercial de *"ponerle IA mágica a todo"* sobre datos y procesos rotos, y la consolidación de brechas de seguridad que ya no perdonan la improvisación.
 - **Escena / experiencia real de apertura en el Prefacio:**
   - El contraste recurrente vivido en salas de juntas: la gerencia niega o regatea presupuesto para respaldos probados, renovación de *switches* o soporte básico, y en esa misma reunión pregunta entusiasmada cuánto cuesta comprar la moda tecnológica de turno (*"migrar todo a la nube"* ayer, *"meterle inteligencia artificial"* hoy).
+
+---
+
+## Sesión 01 — Capítulo 1: El choque de idiomas entre Negocio y TI (`manuscrito/01-choque-idiomas-negocio-ti.md`)
+
+- **Escena y excentricidad central (Bloque 1.3):**
+  - El síndrome de *"tiene enchufe, llámenle a Sistemas"*: asignar tareas completamente ajenas al perfil técnico de cada especialista y recortar plantilla asumiendo erróneamente que todas las personas dentro de TI son intercambiables y hacen lo mismo.
+- **Postura autoral sobre la raíz del divorcio Negocio vs. TI (Bloques 1.1 y 1.2):**
+  - **Responsabilidad compartida (50/50):** Ni victimismo gremial ni indulgencia con la gerencia. La dirección fracasa cuando trata a TI como un gasto opaco de taller mecánico, y el propio técnico alimenta esa irrelevancia cuando se esconde detrás de acrónimos en lugar de entender y hablar sobre cómo factura, pierde dinero o asume riesgos la empresa.
+- **Regla operativa frente a peticiones por pasillo / WhatsApp y proyectos zombis (Bloques 1.2 y 1.3):**
+  - **Política de tolerancia cero absoluta:** Si no existe un ticket previo con el formulario completo, nadie en TI mueve un dedo, aunque quien lo pida sea un gerente o director. Las "excepciones blandas" perpetúan el *amiguismo*, vuelven invisible la carga real de trabajo, rompen la trazabilidad de auditoría y condenan los proyectos formales a convertirse en proyectos zombis.
+- **Herramientas y métricas del Marco de Acción Pragmático (Bloque 1.4):**
+  - Tabla traductora directa (*Jerga TI -> Impacto en negocio/riesgo*), cuantificación del coste por hora de inactividad (*RTO/RPO* en moneda dura), despliegue de herramientas libres probadas en trinchera (**GLPI**, **Zammad**, **osTicket**) y publicación interna de un catálogo transparente de roles y servicios.

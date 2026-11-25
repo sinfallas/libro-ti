@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # SPDX-License-Identifier: CC-BY-SA-4.0
 # Copyright (C) 2026 Jesus A. Palencia S.
-# Ejecutor efimero no-root en Docker para GNU Make, Pandoc y QA-11X (Regla Cero).
+# Ejecutor efimero no-root en Docker para GNU Make, Pandoc, Mermaid y QA-11X (Regla Cero).
 
 set -euo pipefail
 
@@ -13,8 +13,9 @@ Uso: ./scripts/editorial.sh <comando> [argumentos...]
 
 Comandos disponibles (ejecutados en contenedores Docker no-root aislados):
   build-image        Construye la imagen local libro-ti/editorial:3.6.4 (Make + Pandoc)
+  diagramas          Renderiza diagramas/*.mmd a PNG 300 DPI en contenedor offline
   plantilla          Genera o verifica plantillas/referencia.odt con Pandoc real
-  odt [VAR=VAL...]   Compila manuscrito/*.md hacia build/Fundamentos_de_TI_2ed.odt
+  odt [VAR=VAL...]   Renderiza diagramas (si existen) y compila manuscrito/*.md a .odt
   clean              Limpia artefactos compilados en build/
   check-tools        Verifica herramientas disponibles dentro del contenedor editorial
   help               Muestra la ayuda del Makefile desde el contenedor editorial
@@ -28,15 +29,28 @@ Comandos disponibles (ejecutados en contenedores Docker no-root aislados):
 EOF
 }
 
-ensure_editorial_image() {
+ensure_service_image() {
   local project_dir="$1"
   local compose_file="$2"
-  local editorial_image="${EDITORIAL_IMAGE:-libro-ti/editorial:3.6.4}"
+  local service_name="$3"
+  local image_tag="$4"
 
-  if ! docker image inspect "${editorial_image}" >/dev/null 2>&1; then
-    printf "AVISO: Imagen local '%s' no encontrada; construyendo desde Dockerfile.editorial...\n" "${editorial_image}" >&2
-    docker compose --project-directory "${project_dir}" -f "${compose_file}" build editorial
+  if ! docker image inspect "${image_tag}" >/dev/null 2>&1; then
+    printf "AVISO: Imagen local '%s' no encontrada; construyendo servicio '%s'...\n" "${image_tag}" "${service_name}" >&2
+    docker compose --project-directory "${project_dir}" -f "${compose_file}" build "${service_name}"
   fi
+}
+
+run_diagramas() {
+  local project_dir="$1"
+  local compose_file="$2"
+  local qa_uid="$3"
+  local qa_gid="$4"
+  local diagramas_image="${DIAGRAMAS_IMAGE:-libro-ti/diagramas:1.52.0}"
+
+  ensure_service_image "${project_dir}" "${compose_file}" "diagramas" "${diagramas_image}"
+  docker compose --project-directory "${project_dir}" -f "${compose_file}" \
+    run --rm -T -u "${qa_uid}:${qa_gid}" diagramas diagramas
 }
 
 run_qa_lint() {
@@ -81,6 +95,7 @@ main() {
   script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
   local project_dir="${EDITORIAL_PROJECT_DIR:-$(cd "${script_dir}/.." && pwd)}"
   local compose_file="${EDITORIAL_COMPOSE_FILE:-${project_dir}/docker-compose.qa.yml}"
+  local editorial_image="${EDITORIAL_IMAGE:-libro-ti/editorial:3.6.4}"
   local qa_uid="${QA_UID:-$(id -u)}"
   local qa_gid="${QA_GID:-$(id -g)}"
   local subcmd="${1:---help}"
@@ -102,6 +117,9 @@ main() {
     build-image)
       docker compose --project-directory "${project_dir}" -f "${compose_file}" build editorial
       ;;
+    diagramas)
+      run_diagramas "${project_dir}" "${compose_file}" "${qa_uid}" "${qa_gid}"
+      ;;
     pandoc)
       shift
       if [[ "$#" -eq 0 ]]; then
@@ -110,8 +128,15 @@ main() {
       fi
       docker compose --project-directory "${project_dir}" -f "${compose_file}" run --rm -T -u "${qa_uid}:${qa_gid}" pandoc "$@"
       ;;
-    all | odt | plantilla | clean | check-tools | help)
-      ensure_editorial_image "${project_dir}" "${compose_file}"
+    all | odt)
+      if compgen -G "${project_dir}/diagramas/*.mmd" >/dev/null; then
+        run_diagramas "${project_dir}" "${compose_file}" "${qa_uid}" "${qa_gid}"
+      fi
+      ensure_service_image "${project_dir}" "${compose_file}" "editorial" "${editorial_image}"
+      docker compose --project-directory "${project_dir}" -f "${compose_file}" run --rm -T -u "${qa_uid}:${qa_gid}" editorial make "$@"
+      ;;
+    plantilla | clean | check-tools | help)
+      ensure_service_image "${project_dir}" "${compose_file}" "editorial" "${editorial_image}"
       docker compose --project-directory "${project_dir}" -f "${compose_file}" run --rm -T -u "${qa_uid}:${qa_gid}" editorial make "$@"
       ;;
     qa-lint)

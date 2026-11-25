@@ -1,0 +1,21 @@
+# SPDX-License-Identifier: CC-BY-SA-4.0
+# Copyright (C) 2026 Jesus A. Palencia S.
+FROM mcr.microsoft.com/playwright:v1.52.0-noble@sha256:a021500a801bab0611049217ffad6b9697d827205c15babb86a53bc1a61c02d5
+
+ENV PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 \
+    NPM_CONFIG_UPDATE_NOTIFIER=false
+
+RUN mkdir -p /opt/mermaid-renderer /workspace \
+    && npm install --prefix /opt/mermaid-renderer --no-save --no-audit --no-fund \
+      playwright-core@1.52.0 \
+      mermaid@11.6.0 \
+    && npm cache clean --force \
+    && chown -R pwuser:pwuser /opt/mermaid-renderer /workspace
+
+WORKDIR /workspace
+USER pwuser
+
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+  CMD node --version >/dev/null || exit 1
+
+ENTRYPOINT ["node", "/workspace/scripts/render-mermaid.mjs"]

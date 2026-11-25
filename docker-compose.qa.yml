@@ -31,6 +31,34 @@ services:
     security_opt:
       - no-new-privileges:true
 
+  diagramas:
+    build:
+      context: .
+      dockerfile: Dockerfile.diagramas
+    image: libro-ti/diagramas:1.52.0
+    hostname: libro_diagramas_env
+    pull_policy: if_not_present
+    mem_limit: 2g
+    restart: "no"
+    cpus: "${QA_CPU_LIMIT:-2.0}"
+    pids_limit: 512
+    network_mode: none
+    read_only: true
+    tmpfs:
+      - /tmp:size=256M,noexec,nosuid,nodev
+    user: "${QA_UID:-1000}:${QA_GID:-1000}"
+    environment:
+      HOME: /tmp
+      TMPDIR: /tmp
+      TZ: UTC
+    volumes:
+      - .:/workspace
+    working_dir: /workspace
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+
   pandoc:
     image: pandoc/core:3.6.4@sha256:5b8a29d9b70d5d8ca766e5d1dcfc41916b23ab79276a80527be70516110f4c1e
     hostname: libro_pandoc_env
@@ -78,4 +106,3 @@ services:
       - ALL
     security_opt:
       - no-new-privileges:true
-    command: bash -c "echo 'Contenedor QA Bash listo para ShellCheck, shfmt, BATS y kcov.'; exit 0"

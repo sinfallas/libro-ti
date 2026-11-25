@@ -1,0 +1,16 @@
+flowchart LR
+    subgraph TI["En la Trinchera de TI"]
+        direction TB
+        A["Paso 1 — Pedido por pasillo o WhatsApp<br/>('Es un favorcito de 5 minutos')"] --> B["Paso 2 — Trabajo invisible sin ticket<br/>(Reinan el amiguismo y la urgencia)"]
+        B --> C["Paso 3 — Equipo técnico interrumpido<br/>(Cambios sin rastro y fatiga diaria)"]
+        C --> D["Paso 4 — Proyectos vueltos zombis<br/>(No avanzan ni cierran en fecha)"]
+    end
+
+    subgraph NEG["En el Directorio del Negocio"]
+        direction TB
+        E["Paso 5 — Diagnóstico gerencial:<br/>'TI es lenta, cara y tiene gente ociosa'"] --> F["Paso 6 — Recorte de presupuesto y personal<br/>('Todos en TI hacen lo mismo')"]
+        F --> G["Paso 7 — Más deuda técnica e incendios<br/>(Cero margen para planificar)"]
+    end
+
+    TI ==>|"Proyectos estancados<br/>y trabajo invisible"| NEG
+    NEG ==>|"Más presión diaria<br/>y menos recursos"| TI

@@ -16,7 +16,7 @@ rights: "Creative Commons Atribución-CompartirIgual 4.0 Internacional (CC BY-SA
 **Edición:** Segunda edición, revisada, actualizada y expandida (2026)  
 **Primera edición:** Octubre de 2022 (39 páginas)  
 
-![Licencia Creative Commons Atribución-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)](licencia.png)
+![Licencia Creative Commons Atribución-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)](licencia.png){ width=22% }
 
 Esta obra se distribuye bajo la licencia **Creative Commons Atribución-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)**. Eres libre de compartir —copiar y redistribuir el material en cualquier medio o formato— y de adaptar —remezclar, transformar y construir a partir del material para cualquier propósito, incluso comercial—, siempre que reconozcas adecuadamente la autoría original, proporciones un enlace a la licencia, indiques si se han realizado cambios y distribuyas tus contribuciones bajo la misma licencia que el original. Texto legal completo en: https://creativecommons.org/licenses/by-sa/4.0/deed.es
 
