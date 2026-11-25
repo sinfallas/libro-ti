@@ -1,0 +1,16 @@
+flowchart LR
+    subgraph ROTO["Modelo Roto (VPN Plana)"]
+        direction TB
+        R1["PC familiar compartida o móvil personal<br/>(Sin parches + WhatsApp privado)"] --> R2["Túnel VPN clásico con contraseña simple<br/>(Acceso plano a toda la subred LAN)"]
+        R2 --> R3["Datos críticos descargados en disco local<br/>(Cero rastro ni borrado al renunciar)"]
+        R3 --> R4["Infección doméstica salta a servidores<br/>o fuga de cartera entera de clientes"]
+    end
+
+    subgraph SANO["Modelo 2026 (Aislamiento)"]
+        direction TB
+        S1["Equipo corporativo gestionado o BYOD<br/>(Sin espiar la vida privada del dueño)"] --> S2["Identidad fuerte Keycloak / Authentik<br/>(MFA FIDO2 / Passkeys resistente a phishing)"]
+        S2 --> S3["Acceso mínimo NetBird / Headscale<br/>o sesión aislada Guacamole / Kasm"]
+        S3 --> S4["Solo ve la app autorizada y cero datos<br/>quedan en el equipo personal"]
+    end
+
+    ROTO ==>|"Reemplazar perímetro físico<br/>por identidad y aislamiento"| SANO

@@ -56,3 +56,16 @@
   - Exigir siempre **formatos/protocolos abiertos y plan de salida documentado** antes de contratar un proveedor o adoptar una herramienta, vetando tecnologías exóticas elegidas para engordar currículums que dependan de un único "iluminado" en el equipo.
 - **Herramientas y métricas del Marco de Acción Pragmático (Bloque 2.4):**
   - Semáforo vivo de ciclo de vida (*EOL/EOS*) apoyado en **Snipe-IT**, **NetBox** o **GLPI** cruzado con `endoflife.date` (más aislamiento inmediato de lo vencido), cuota fija protegida del **15 %–20 %** de capacidad para pagar deuda existente y **filtro anti-humo de 5 preguntas** antes de aprobar cualquier moda comercial.
+
+---
+
+## Sesión 03 — Capítulo 3: Del BYOD improvisado al trabajo híbrido y remoto seguro (`manuscrito/03-trabajo-hibrido-byod-frontera-diluida.md`)
+
+- **Escena y excentricidad central (Bloque 3.3):**
+  - La computadora portátil familiar compartida —con juegos pirateados, antivirus desactivado y sin parches— conectada mediante una VPN plana directamente a la red interna de servidores, mientras el usuario reclama además que TI le repare el Wi-Fi o la impresora de su casa.
+- **Postura autoral sobre privacidad, propiedad del equipo y *bossware* (Bloques 3.1 y 3.3):**
+  - Rescate y desarrollo de la nota original sobre la *"definición utópica de privacidad"*: **control total del dispositivo exige equipo pagado por la empresa**. Si existe *BYOD*, TI únicamente aísla y gobierna la sesión o contenedor de trabajo (cero *bossware* espía sobre la vida privada del empleado y cero soporte técnico al hardware o red doméstica).
+- **Regla frente a VPN planas y WhatsApp personal (Bloques 3.2 y 3.3):**
+  - Mano dura en ambos frentes: jubilación definitiva de la VPN plana abierta a toda la LAN (vector directo de propagación lateral de *ransomware*) y prohibición de gestionar carteras de clientes o documentación sensible desde cuentas personales de WhatsApp.
+- **Herramientas y estándares del Marco de Acción Pragmático (Bloque 3.4):**
+  - Identidad centralizada con **Keycloak** o **Authentik** + MFA fuerte (**FIDO2 / WebAuthn / *Passkeys*** o *TOTP*, sin SMS); reemplazo de VPN plana por malla segmentada sobre **WireGuard** (**NetBird** o **Headscale/Tailscale**); aislamiento sin datos locales en *BYOD* vía **Apache Guacamole** o **Kasm Workspaces**; canales propios con **Chatwoot** / **Mattermost**; y política *BYOD* firmable de 1 página.

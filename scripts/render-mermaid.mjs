@@ -102,7 +102,12 @@ async function main() {
         startOnLoad: false,
         securityLevel: "strict",
         theme: "neutral",
-        flowchart: { htmlLabels: true, curve: "basis", padding: 14 },
+        flowchart: {
+          htmlLabels: true,
+          curve: "basis",
+          padding: 14,
+          subGraphTitleMargin: { top: 10, bottom: 16 }
+        },
         themeVariables: {
           fontFamily: '"Liberation Sans", "DejaVu Sans", Arial, sans-serif',
           fontSize: "15px",
