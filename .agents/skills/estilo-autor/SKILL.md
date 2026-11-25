@@ -12,9 +12,11 @@ Esta skill gobierna toda co-escritura de **"Fundamentos de TI: Un recorrido por 
 ## 1. Voz, Postura y Persona Autoral
 
 - **Identidad del narrador:** Profesional veterano de infraestructura, redes, operaciones y ciberseguridad (*"informático de profesión y excéntrico por convicción"*). Habla desde las cicatrices operativas de quien ha administrado cableado, servidores, cortafuegos, presupuestos recortados, auditorías y migraciones reales.
-- **Persona gramatical:**
+- **Persona gramatical y registro lingüístico (acordado con el autor):**
   - **Primera persona singular (`yo`)** para posturas propias, juicios técnicos directos y anécdotas vividas en campo (*"En más de una ocasión me tocó ver..."*, *"Durante años he visto desfilar..."*).
   - **Primera persona del plural cercano (`nosotros`)** cuando se interpela al gremio técnico o se analiza la dinámica interna de un departamento de TI (*"En nuestro entorno solemos olvidar que..."*).
+  - **Segunda persona cercana (`tú`)** para interpelar directamente al lector en todo el libro, en **español técnico panhispánico neutro** (evitar cambios arbitrarios a *"usted"* salvo citas textuales históricas).
+  - **Manejo de anglicismos:** Mantener en inglés y en *cursiva* los términos universales de trinchera (*Zero Trust*, *error budget*, *runbook*, *post-mortem*, *Shadow AI*), acompañados de su traducción o explicación concisa en español la primera vez que aparezcan.
 - **Tono:** Directo, pragmático, conversacional pero preciso, con **ironía fina** frente a dos extremos igual de dañinos:
   1. La burocracia corporativa y la gerencia que compra "el último artilugio de moda" creyendo que todos los informáticos hacen exactamente lo mismo.
   2. El ego técnico, el "amiguismo", el ocultamiento de información y el culto a la complejidad innecesaria dentro del propio departamento de TI.
@@ -84,5 +86,6 @@ Nunca redactar capítulos en lote ni rellenar con teoría genérica:
   - `###` (`H3`): **Los 4 bloques estructurales / Subcapítulos numerados** (`### 1.1. El concepto sin humo`, `### 1.2. La teoría vs. la trinchera`, `### 1.3. Excentricidades y antipatrones`, `### 1.4. Marco de acción pragmático`), que conforman el tercer nivel exacto visible en la Tabla de Contenido generada por Pandoc.
   - `####` (`H4`): **Subdivisiones operativas internas** dentro de cada bloque (fuera del TOC para mantener un índice limpio y navegable). Prohibido saltar niveles jerárquicos (ej. pasar de `##` a `####`).
 - **Tablas legibles en papel/ODT:** Usar tablas Pipe de Markdown estándar, máximo 4–5 columnas con textos concisos por celda para evitar desbordamientos en página LibreOffice Writer.
-- **Diagramas como código:** Guardar la fuente de todo organigrama, arquitectura o flujo en `diagramas/<slug>.mmd` (sintaxis Mermaid limpia, alto contraste y etiquetas en español) y referenciarlo con contexto explicativo en el capítulo.
+- **Portadilla y recursos gráficos base:** `manuscrito/00-preliminares.md` utiliza portadilla tipográfica limpia de 2.ª Edición (2026) e incrusta `licencia.png` en Créditos (dejando el diseño de portada gráfica final para el cierre de la obra).
+- **Diagramas como código (`.mmd` -> PNG en ODT):** Guardar la fuente editable de todo organigrama, arquitectura o flujo en `diagramas/<slug>.mmd` (sintaxis Mermaid limpia, alto contraste y etiquetas en español) y exportarla de forma determinista en contenedor Docker a PNG de alta resolución para incrustarla como imagen en el `.odt` (dado que Pandoc no dibuja bloques `mermaid` nativamente en ODT y LibreOffice Writer recorta etiquetas SVG `<foreignObject>`).
 - **Cero residuos de edición:** Prohibido entregar archivos con `TODO`, `TBD`, `[pendiente]`, citas inventadas, URLs rotas o bloques de código sin identificador de lenguaje.
