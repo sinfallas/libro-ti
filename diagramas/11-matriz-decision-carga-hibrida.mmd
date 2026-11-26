@@ -1,0 +1,16 @@
+flowchart LR
+    subgraph ARTESANAL["Infraestructura Artesanal y Cautiva"]
+        direction TB
+        A1["Servidores 'mascota' instalados a mano<br/>(Nadie sabe reconstruirlos en frío)"] --> A2["Confundir RAID con copia de seguridad<br/>(Un DELETE borra ambos discos igual)"]
+        A2 --> A3["Licencias comerciales de hipervisor<br/>multiplicadas x4 por núcleo físico"]
+        A3 --> A4["Instancias Cloud sobredimensionadas<br/>encendidas 24/7 sin cálculo TCO"]
+    end
+
+    subgraph HIBRIDA["Infraestructura Reproducible 2026"]
+        direction TB
+        H1["Plantillas limpias cloud-init + Ansible<br/>(Ganado clonable en 10 minutos)"] --> H2["Virtualización abierta Proxmox VE / KVM<br/>+ integridad de datos sobre ZFS"]
+        H2 --> H3["Calculadora TCO honesta a 36 meses<br/>(Repatriar base fija < 18m retorno)"]
+        H3 --> H4["Híbrido real: base estable propia/colo<br/>+ elasticidad puntual en nube pública"]
+    end
+
+    ARTESANAL ==>|"Estandarización abierta<br/>y números sin humo"| HIBRIDA

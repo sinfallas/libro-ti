@@ -1,0 +1,16 @@
+flowchart LR
+    subgraph CAOSIA["Fiebre de IA sin Gobierno"]
+        direction TB
+        C1["Quemar presupuesto en GPUs queriendo<br/>'entrenar un LLM propio desde cero'"] --> C2["Shadow AI: contratos y nóminas<br/>pegados en chatbots públicos gratis"]
+        C2 --> C3["RAG sin permisos: el pasante consulta<br/>carpetas restringidas por accidente"]
+        C3 --> C4["Agente autónomo sin barandillas<br/>ejecuta borrados o alucina cifras"]
+    end
+
+    subgraph LLMOPS["Arquitectura LLMOps Gobernada"]
+        direction TB
+        L1["Puerta única LiteLLM + Open WebUI<br/>(Cuotas por área y cero entrenamiento)"] --> L2["Híbrido: vLLM / Ollama privado<br/>o API empresarial auditada"]
+        L2 --> L3["RAG limpio en PostgreSQL + pgvector<br/>respetando permisos exactos del rol"]
+        L3 --> L4["Pruebas Promptfoo + OWASP LLM Top 10<br/>y confirmación humana en acciones"]
+    end
+
+    CAOSIA ==>|"Gobernanza de datos, costos<br/>y evaluación continua"| LLMOPS

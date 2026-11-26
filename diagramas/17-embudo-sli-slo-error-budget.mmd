@@ -1,0 +1,16 @@
+flowchart LR
+    subgraph FALSO["Falso SRE y Ceguera"]
+        direction TB
+        F1["Rebautizar sysadmins como 'SRE'<br/>con 95% de trabajo manual (toil)"] --> F2["Tableros verdes de CPU y RAM<br/>mientras nadie puede pagar afuera"]
+        F2 --> F3["40 alertas basura a las 3:00 a.m.<br/>('disco al 79%') queman la guardia"]
+        F3 --> F4["Pelea subjetiva Dev vs. Ops<br/>tras cada caída en producción"]
+    end
+
+    subgraph SRE["SRE y Observabilidad Real"]
+        direction TB
+        S1["Instrumentación OpenTelemetry única<br/>(Métricas, logs JSON y trazas)"] --> S2["Stack libre: VictoriaMetrics/Prometheus<br/>+ Loki + Tempo + sonda Uptime Kuma"]
+        S2 --> S3["3 SLOs sobre viajes del usuario<br/>y las 4 señales doradas"]
+        S3 --> S4["Presupuesto de error como árbitro<br/>+ alerta nocturna solo si duele hoy"]
+    end
+
+    FALSO ==>|"Ingeniería aplicada a operaciones<br/>y datos centrados en el usuario"| SRE

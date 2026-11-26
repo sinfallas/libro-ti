@@ -1,0 +1,16 @@
+flowchart LR
+    subgraph HUMO["Falso DevOps (Caos en YAML)"]
+        direction TB
+        H1["Contratar 'un chico DevOps' solitario<br/>para tapar la guerra Dev vs. Ops"] --> H2["Pipelines frágiles de 45 minutos<br/>que todos terminan puenteando"]
+        H2 --> H3["Recursos sueltos creados sin control<br/>o toques por SSH a medianoche"]
+        H3 --> H4["Deriva de configuración (drift):<br/>nadie sabe qué corre en producción"]
+    end
+
+    subgraph REAL["Ingeniería de Entrega Gobernada"]
+        direction TB
+        R1["Aprovisionamiento centralizado:<br/>ticket formal hacia Infraestructura"] --> R2["Infra ejecuta con IaC en Git<br/>(OpenTofu + Ansible, cero SSH manual)"]
+        R2 --> R3["CI/CD de aplicación limpio (<10m)<br/>(GitLab CI / Woodpecker reproducible)"]
+        R3 --> R4["4 métricas DORA reales:<br/>baja tasa de fallos y MTTR mínimo"]
+    end
+
+    HUMO ==>|"Parcelas claras + Git<br/>como única verdad"| REAL

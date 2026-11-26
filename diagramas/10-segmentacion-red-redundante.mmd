@@ -1,0 +1,16 @@
+flowchart LR
+    subgraph FRAGIL["Red Heredada y Frágil"]
+        direction TB
+        F1["Dos ISPs entrando por el mismo tubo<br/>(Una excavadora tumba toda la sede)"] --> F2["Rack 'espagueti' sin etiquetas<br/>+ direcciones IP en Excel viejo"]
+        F2 --> F3["Red plana /16 sin VLANs ni defensas<br/>(Cámaras IoT + invitados + servidores)"]
+        F3 --> F4["Mini-switch casero bajo escritorio<br/>provoca bucle que apaga el piso"]
+    end
+
+    subgraph SOLIDA["Arquitectura de Red Resiliente"]
+        direction TB
+        S1["Rutas físicas opuestas de fibra<br/>+ respaldo 5G o satelital LEO"] --> S2["Borde OPNsense / VyOS + respaldo<br/>automático de configs con Oxidized"]
+        S2 --> S3["Zonas estancas (VLANs + 802.1X)<br/>documentadas en NetBox / phpIPAM"]
+        S3 --> S4["BPDU Guard + DHCP Snooping activos<br/>y visibilidad LibreNMS / Zabbix"]
+    end
+
+    FRAGIL ==>|"Orden físico, segmentación<br/>y medios independientes"| SOLIDA

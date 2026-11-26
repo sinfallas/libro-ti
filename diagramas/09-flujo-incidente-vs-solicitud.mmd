@@ -1,0 +1,16 @@
+flowchart LR
+    subgraph INC["Carril A: Incidente (Algo se rompió)"]
+        direction TB
+        I1["Portal único: usuario reporta síntoma<br/>(Nunca elige su propia prioridad)"] --> I2["Matriz objetiva Impacto x Urgencia<br/>(Asigna P1 a P4 y activa SLA/OLA)"]
+        I2 --> I3["Restaurar servicio lo antes posible<br/>(Escalamiento limpio sin ping-pong)"]
+        I3 --> I4["Si se repite pasa a Gestión de Problemas<br/>(Eliminar causa raíz + guía wiki)"]
+    end
+
+    subgraph REQ["Carril B: Solicitud (Algo nuevo)"]
+        direction TB
+        R1["Catálogo de Servicios humano<br/>(Alta usuario, acceso, equipo estándar)"] --> R2["Flujo preaprobado y requisitos claros<br/>(Sin inflarlo como caída crítica)"]
+        R2 --> R3["Cambio estándar automatizado<br/>(Autogestión de claves / plantillas)"]
+        R3 --> R4["Cierre verificado por el usuario<br/>(Auditoría de reaperturas = 0 maquillaje)"]
+    end
+
+    INC -.->|"Prohibido mezclar colas<br/>ni atender por amiguismo"| REQ

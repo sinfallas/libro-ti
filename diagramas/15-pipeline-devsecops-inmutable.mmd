@@ -1,0 +1,16 @@
+flowchart LR
+    subgraph RUIDO["Teatro de Seguridad Tardío"]
+        direction TB
+        R1["Archivo .env con claves productivas<br/>subido por descuido al historial Git"] --> R2["Escáner corrido el viernes a las 5 p.m.<br/>escupe PDF de 4.000 falsos positivos"]
+        R2 --> R3["Contenedores corriendo como root<br/>y parchados en vivo con docker exec"]
+        R3 --> R4["Desarrollo ignora todas las alertas<br/>o Seguridad frena la salida a última hora"]
+    end
+
+    subgraph DEVSEC["Pipeline DevSecOps Inmutable"]
+        direction TB
+        D1["Pre-commit Gitleaks + secretos en<br/>OpenBao / SOPS + red Security Champions"] --> D2["Gates sin ruido: Semgrep (SAST) +<br/>Trivy (SCA, IaC y SBOM CycloneDX)"]
+        D2 --> D3["Imagen inmutable sin root (SHA-256,<br/>read_only, cap_drop ALL) firmada Cosign"]
+        D3 --> D4["Pruebas dinámicas OWASP ZAP (DAST)<br/>y despliegue rápido sin sorpresas"]
+    end
+
+    RUIDO ==>|"Controles tempranos,<br/>precisos e inmutables"| DEVSEC

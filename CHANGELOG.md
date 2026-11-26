@@ -5,6 +5,8 @@ Todos los cambios notables de **Fundamentos de TI: Un recorrido por las excentri
 ## [Unreleased] — Segunda Edición (2026)
 
 ### Añadido
+- Manuscrito íntegro de la Segunda Edición (2026) en `manuscrito/00-preliminares.md` a `manuscrito/21-anexo-glosario-comentado.md` (22 archivos modulares: Preliminares, 20 Capítulos en 4 Partes y Glosario comentado de 57 términos; ~52.200 palabras / **134 páginas reales en LibreOffice Writer**), co-escrito mediante entrevistas autorales registradas en `specs/entrevistas-autor.md`.
+- Dieciséis diagramas técnicos en `diagramas/*.mmd` renderizados determinísticamente en contenedor offline a PNG de 300 DPI (`Dockerfile.diagramas` + `scripts/render-mermaid.mjs`) e incrustados en `build/Fundamentos_de_TI_2ed.odt`.
 - Arquitectura modular *Books as Code* (`manuscrito/`, `diagramas/`, `plantillas/`, `build/`, `specs/`, `fuente-2022/`).
 - Skill editorial `.agents/skills/estilo-autor/SKILL.md` con reglas de voz autoral, estructura de 4 bloques, protocolo de micro-entrevistas e higiene Pandoc/ODT.
 - Especificaciones editoriales en `specs/mapa-migracion-2022-2026.md`, `specs/indice-maestro.md` (aprobado por el autor para iniciar Fase 3) y `specs/entrevistas-autor.md`.

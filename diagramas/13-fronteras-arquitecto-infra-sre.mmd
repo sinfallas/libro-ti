@@ -1,0 +1,16 @@
+flowchart LR
+    subgraph BABEL["Torre de Babel (Caos)"]
+        direction TB
+        B1["7 lenguajes y frameworks distintos<br/>según capricho de cada programador"] --> B2["Integraciones leyendo directo las<br/>tablas SQL internas del ERP"]
+        B2 --> B3["Código copiado de IA sin pruebas<br/>+ empujes directos a producción"]
+        B3 --> B4["Arquitecto apagando tickets N1<br/>o dibujando cajas irreales"]
+    end
+
+    subgraph ARQ["Arquitectura Gobernada"]
+        direction TB
+        A1["1 o 2 stacks oficiales dominados<br/>por todo el equipo (bus factor > 2)"] --> A2["Monolito modular + contratos<br/>OpenAPI limpios entre sistemas"]
+        A2 --> A3["ADRs en Git + modelo C4<br/>+ revisión humana y tests automáticos"]
+        A3 --> A4["Frontera limpia: Arquitectura diseña,<br/>Infra sostiene y SRE mide fiabilidad"]
+    end
+
+    BABEL ==>|"Estándares comunes y<br/>cada quien en su parcela"| ARQ

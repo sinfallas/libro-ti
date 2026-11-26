@@ -1,0 +1,15 @@
+flowchart LR
+    subgraph SEC["Ejecución Defensiva (SecOps)"]
+        direction TB
+        S1["Diseña e implementa controles<br/>(Hardening, MFA, segmentación)"] --> S2["Opera monitoreo y alertas diarias<br/>(Wazuh, CrowdSec, parches KEV)"]
+        S2 --> S3["Ejecuta respaldos y contención<br/>(Regla 3-2-1-1-0 y respuesta activa)"]
+    end
+
+    subgraph GRC["Control Independiente (GRC / DPO)"]
+        direction TB
+        G1["Define apetito de riesgo y políticas<br/>(NIST CSF 2.0 / ISO 27001 sin humo)"] --> G2["Audita evidencia viva en campo<br/>(Simulacro DRP + bajas RR. HH.)"]
+        G2 --> G3["Gobierna privacidad y contratos<br/>(Minimización DPO + plan de salida)"]
+    end
+
+    GRC ==>|"Exige control y verifica<br/>sin tocar consolas"| SEC
+    SEC -.->|"Entrega evidencia técnica<br/>irrefutable"| GRC

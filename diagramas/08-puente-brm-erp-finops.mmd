@@ -1,0 +1,16 @@
+flowchart LR
+    subgraph OPACO["Caja Negra y Despilfarro"]
+        direction TB
+        O1["Procesos rotos metidos a la fuerza<br/>deformando el código base del ERP"] --> O2["15 hojas de Excel paralelas con<br/>cifras que contradicen a Finanzas"]
+        O2 --> O3["Tarjetas corporativas comprando<br/>SaaS y nube sin dueño ni etiquetas"]
+        O3 --> O4["Factura sorpresa anual: asientos<br/>fantasma y entornos olvidados 24/7"]
+    end
+
+    subgraph FINOPS["Gobierno BRM + FinOps"]
+        direction TB
+        F1["Regla 80/20 y núcleo limpio (Clean Core)<br/>(ERPNext / Odoo + procesos ordenados)"] --> F2["Única fuente analítica confiable<br/>(Metabase / Superset auditado)"]
+        F2 --> F3["Etiquetado obligatorio + estándar FOCUS<br/>(owner, cost_center, env, ttl)"]
+        F3 --> F4["Purga mensual de licencias (>30d)<br/>+ costo unitario por venta/cliente"]
+    end
+
+    OPACO ==>|"Hablar el idioma del dinero<br/>con datos y dueños claros"| FINOPS

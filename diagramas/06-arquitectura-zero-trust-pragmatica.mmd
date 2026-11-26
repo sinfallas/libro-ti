@@ -1,0 +1,16 @@
+flowchart LR
+    subgraph TEATRO["Seguridad de Cartón"]
+        direction TB
+        T1["'Somos muy chicos para que ataquen'<br/>+ CISO decorativo sin derecho a veto"] --> T2["Caja costosa con alertas por defecto<br/>que nadie mira ni ajusta"]
+        T2 --> T3["Usuarios como administradores locales<br/>+ parches atrasados sin priorizar"]
+        T3 --> T4["Backup montado en red plana:<br/>el ransomware cifra todo a la vez"]
+    end
+
+    subgraph SECOPS["Defensa SecOps Real"]
+        direction TB
+        S1["Higiene CIS IG1 + privilegio mínimo<br/>(MFA fuerte y cero admin local)"] --> S2["Parcheo 48h guiado por CISA KEV<br/>+ bloqueo activo CrowdSec / Wazuh"]
+        S2 --> S3["Respaldos inmutables 3-2-1-1-0<br/>(PBS / Restic / Borg append-only)"]
+        S3 --> S4["Playbook en papel fuera de línea<br/>+ simulacros reales de contención"]
+    end
+
+    TEATRO ==>|"Pasar de comprar cajas<br/>a ingeniería defensiva"| SECOPS
