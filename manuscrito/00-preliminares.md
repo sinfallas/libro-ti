@@ -9,6 +9,8 @@ rights: "Creative Commons Atribución-CompartirIgual 4.0 Internacional (CC BY-SA
 
 # Preliminares
 
+![Portada — Fundamentos de TI, Segunda Edición (2026)](00-portada-2026.png){ width=84% }
+
 ## Créditos y Licencia
 
 **Título:** *Fundamentos de TI: Un recorrido por las excentricidades de un entorno de TI*  

@@ -4,6 +4,10 @@
 **Autor:** Jesús A. Palencia S. (`sinfallas@gmail.com`)  
 **Licencia:** [Creative Commons Atribución-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)](LICENSE)
 
+<p align="center">
+  <img src="diagramas/00-portada-2026.png" alt="Portada — Fundamentos de TI (2.ª Edición, 2026)" width="420"/>
+</p>
+
 ![Licencia CC BY-SA 4.0](fuente-2022/licencia.png)
 
 ---

@@ -104,6 +104,15 @@ setup() {
   assert_success
   assert_equal "$(mock_get_call_args "${MOCK_DOCKER}" 5)" "compose --project-directory ${SANDBOX} -f ${SANDBOX}/docker-compose.qa.yml run --rm -T -u 1000:1000 diagramas diagramas"
   assert_equal "$(mock_get_call_args "${MOCK_DOCKER}" 7)" "compose --project-directory ${SANDBOX} -f ${SANDBOX}/docker-compose.qa.yml run --rm -T -u 1000:1000 editorial make odt"
+
+  rm -f "${SANDBOX}/diagramas/01-test.mmd"
+  printf "<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10'/>\n" >"${SANDBOX}/diagramas/00-portada.svg"
+  for i in 8 9 10 11; do
+    mock_set_status "${MOCK_DOCKER}" 0 "${i}"
+  done
+  run bash "${SCRIPT_PATH}" odt
+  assert_success
+  assert_equal "$(mock_get_call_args "${MOCK_DOCKER}" 9)" "compose --project-directory ${SANDBOX} -f ${SANDBOX}/docker-compose.qa.yml run --rm -T -u 1000:1000 diagramas diagramas"
 }
 
 @test "editorial.sh construye automaticamente editorial si la imagen local no existe" {

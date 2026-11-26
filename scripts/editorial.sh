@@ -129,7 +129,7 @@ main() {
       docker compose --project-directory "${project_dir}" -f "${compose_file}" run --rm -T -u "${qa_uid}:${qa_gid}" pandoc "$@"
       ;;
     all | odt)
-      if compgen -G "${project_dir}/diagramas/*.mmd" >/dev/null; then
+      if compgen -G "${project_dir}/diagramas/*.mmd" >/dev/null || compgen -G "${project_dir}/diagramas/*.svg" >/dev/null; then
         run_diagramas "${project_dir}" "${compose_file}" "${qa_uid}" "${qa_gid}"
       fi
       ensure_service_image "${project_dir}" "${compose_file}" "editorial" "${editorial_image}"

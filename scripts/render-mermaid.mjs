@@ -44,9 +44,13 @@ async function main() {
     .readdirSync(diagramDir)
     .filter((f) => f.endsWith(".mmd"))
     .sort();
+  const svgFiles = fs
+    .readdirSync(diagramDir)
+    .filter((f) => f.endsWith(".svg"))
+    .sort();
 
-  if (mmdFiles.length === 0) {
-    console.log(`Sin archivos .mmd en '${diagramDir}'; nada que renderizar.`);
+  if (mmdFiles.length === 0 && svgFiles.length === 0) {
+    console.log(`Sin archivos .mmd ni .svg en '${diagramDir}'; nada que renderizar.`);
     return;
   }
 
@@ -137,6 +141,35 @@ async function main() {
       await locator.screenshot({ path: tmpPath, type: "png" });
       fs.renameSync(tmpPath, outPath);
       console.log(`Diagrama renderizado: ${path.relative(process.cwd(), outPath)}`);
+    }
+
+    for (const file of svgFiles) {
+      const srcPath = path.join(diagramDir, file);
+      const outPath = path.join(diagramDir, file.replace(/\.svg$/, ".png"));
+      const tmpPath = `${outPath}.tmp`;
+      const svgMarkup = fs.readFileSync(srcPath, "utf8");
+
+      const svgPage = await browser.newPage({
+        viewport: { width: 1000, height: 1500 },
+        deviceScaleFactor: 2,
+      });
+      const svgHtml = `<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { margin: 0; padding: 0; background: transparent; display: inline-block; }
+    #svg-wrap { display: inline-block; line-height: 0; }
+  </style>
+</head>
+<body><div id="svg-wrap">${svgMarkup}</div></body>
+</html>`;
+      await svgPage.setContent(svgHtml, { waitUntil: "load" });
+      await svgPage.locator("#svg-wrap svg").screenshot({ path: tmpPath, type: "png" });
+      await svgPage.close();
+      fs.renameSync(tmpPath, outPath);
+      console.log(`Artefacto SVG renderizado: ${path.relative(process.cwd(), outPath)}`);
     }
 
     await context.close();
